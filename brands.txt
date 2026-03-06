@@ -1,0 +1,103 @@
+# --- Technology / Cloud ---
+icloud
+microsoft
+adobe
+zoom
+docusign
+dropbox
+googledrive
+onedrive
+opensea
+
+# --- Financial / Banking / Payments ---
+paypal
+#visa
+#mastercard
+discover
+americanexpress
+coinbase
+binance
+metamask
+kraken
+
+# --- Streaming / Entertainment ---
+disney
+netflix
+hulu
+peacock
+max
+steam
+playstation
+xbox
+epicgames
+
+# --- Retail (General) ---
+walmart
+sam\W?.?sclub
+costco
+khol.?s
+meijer
+macys
+yeti
+harbor.?freight
+
+# --- Retail (Pharmacy / Grocery) ---
+cvs
+walgreens
+whole\W?foods
+
+# --- Retail (Home Improvement) ---
+lowe.?s
+acehardware
+home.?depot
+andersen
+
+# --- Telecommunications / ISP ---
+t.?mobile
+verizon
+att
+comcast
+
+# --- Shipping / Logistics ---
+fedex
+ups
+usps
+dhl
+
+# --- Hospitality ---
+marriott
+hilton
+
+# --- Insurance / Security / Warranty ---
+carshield
+mcafee
+norton
+adt
+aaa
+
+# --- Coffee ---
+star.?bucks
+
+# --- Job Search ---
+indeed
+ziprecruiter
+monster
+
+# --- Social Media ---
+facebook
+instagram
+linkedin
+twitter
+tiktok
+
+# --- Government (Use with caution - potential for false positives) ---
+# irs
+# socialsecurity
+# medicare
+
+# --- Airlines ---
+united
+delta
+
+# --- Other ---
+trugreen

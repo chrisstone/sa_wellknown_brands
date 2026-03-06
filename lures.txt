@@ -1,0 +1,13 @@
+# --- Reward Lures ---
+reward
+winner
+gift\W?card
+unclaimed
+prize
+
+# --- Financial Lures ---
+invoice
+confirmation
+statement
+payment
+overdue
