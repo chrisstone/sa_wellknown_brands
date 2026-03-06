@@ -4,13 +4,18 @@ use strict;
 use warnings;
 use v5.10;
 
+# @file brands_gen.pl
+# @author Chris Stone
+# @version 1.1.4
+# @description Generates SpamAssassin rules for Brands, Subjects, and Brand+Lure combinations.
+
 # --- Configuration ---
 my $input_brands = 'brands.txt';
 my $input_lures  = 'lures.txt';
 my $output_file  = 'local_brands.cf';
 my $spam_score   = '5.0';
-my $lure_score   = '2.5'; # Additional score for Brand+Lure matches
-my $rule_prefix  = 'LOCAL_SPAM_WK_';
+my $lure_score   = '2.5'; 
+my $rule_prefix  = 'L_WK_'; # Shortened prefix to prevent >40 char names
 # ---
 
 open(my $br_fh, '<', $input_brands) or die "Error: Cannot open '$input_brands': $!\n";
@@ -34,7 +39,9 @@ say "Processing brands and lures to generate '$output_file'...";
 foreach my $lure (@lures) {
     my $l_id = uc($lure);
     $l_id =~ s/[^A-Z0-9]//g;
-    printf $out_fh "header __%sLURE_%s\tSubject =~ /\\b%s\\b/i\n", $rule_prefix, $l_id, $lure;
+    # Truncate lure ID if necessary
+    $l_id = substr($l_id, 0, 10);
+    printf $out_fh "header __%sLU_%s\tSubject =~ /\\b%s\\b/i\n", $rule_prefix, $l_id, $lure;
 }
 print $out_fh "\n";
 
@@ -49,6 +56,9 @@ while (my $brand_regex = <$br_fh>) {
     $identifier =~ s/\\s\*//g; 
     $identifier =~ s/[^a-zA-Z0-9]+//g;
     $identifier = uc($identifier);
+    
+    # Truncate brand identifier to 15 chars to keep total rule length safe
+    $identifier = substr($identifier, 0, 15);
 
     if (length($identifier) == 0) { next; }
 
@@ -69,9 +79,10 @@ while (my $brand_regex = <$br_fh>) {
     foreach my $lure (@lures) {
         my $l_id = uc($lure);
         $l_id =~ s/[^A-Z0-9]//g;
+        $l_id = substr($l_id, 0, 10);
         
-        # Trigger if (Brand in Name OR Brand in Subject) AND (Lure in Subject) AND (Not in Addr)
-        printf $out_fh "meta   %s%s_%s\t((__%s%sa || __%s%ss) && __%sLURE_%s && !__%s%sb)\n",
+        # Meta name structure: L_WK_BRAND_LURE (e.g., L_WK_AMAZON_REWARD)
+        printf $out_fh "meta   %s%s_%s\t((__%s%sa || __%s%ss) && __%sLU_%s && !__%s%sb)\n",
             $rule_prefix, $identifier, $l_id, $rule_prefix, $identifier, $rule_prefix, $identifier, $rule_prefix, $l_id, $rule_prefix, $identifier;
         printf $out_fh "score  %s%s_%s\t%s\n", $rule_prefix, $identifier, $l_id, $lure_score;
     }
@@ -82,4 +93,4 @@ while (my $brand_regex = <$br_fh>) {
 close($br_fh);
 close($out_fh);
 
-say "Complete. Version 1.1.3 generated.";
+say "Complete. Version 1.1.4 generated.";
