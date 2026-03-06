@@ -4,13 +4,6 @@ use strict;
 use warnings;
 use v5.10;
 
-/**
- * @file brands_gen.pl
- * @author Chris Stone
- * @version 1.1.3
- * @description Generates SpamAssassin rules for Brands, Subjects, and Brand+Lure combinations.
- */
-
 # --- Configuration ---
 my $input_brands = 'brands.txt';
 my $input_lures  = 'lures.txt';
