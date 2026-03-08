@@ -67,7 +67,7 @@ while (my $line = <$br_fh>) {
     # Standard Brand Rules (Name, Addr, Subject)
     printf $out_fh "# Rules for: %s\n", $identifier;
     printf $out_fh "header __%s%sa\tFrom:name =~ /\\b%s\\b/i\n", $rule_prefix, $identifier, $display_regex;
-    printf $out_fh "header __%s%sb\tFrom:addr =~ /%s\\./\n", $rule_prefix, $identifier, $domain_regex;
+    printf $out_fh "header __%s%sb\tFrom:addr =~ /%s\$/\n", $rule_prefix, $identifier, $domain_regex;
     printf $out_fh "header __%s%ss\tSubject =~ /\\b%s\\b/i\n", $rule_prefix, $identifier, $display_regex;
 
     # Standard Meta Rules
