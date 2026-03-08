@@ -14,6 +14,7 @@ my $input_brands = 'brands.txt';
 my $input_lures  = 'lures.txt';
 my $output_file  = 'local_brands.cf';
 my $spam_score   = '5.0';
+my $subj_score   = '3.0';
 my $lure_score   = '2.5'; 
 my $rule_prefix  = 'L_WK_'; # Shortened prefix to prevent >40 char names
 # ---
@@ -36,14 +37,9 @@ if (-e $input_lures) {
 say "Processing brands and lures to generate '$output_file'...";
 
 # --- Generate Global Lure Rules First ---
-foreach my $lure (@lures) {
-    my $l_id = uc($lure);
-    $l_id =~ s/[^A-Z0-9]//g;
-    # Truncate lure ID if necessary
-    $l_id = substr($l_id, 0, 10);
-    printf $out_fh "header __%sLU_%s\tSubject =~ /\\b%s\\b/i\n", $rule_prefix, $l_id, $lure;
-}
-print $out_fh "\n";
+my $lures_regex = join('|', @lures);
+printf $out_fh "# Single rule for all lures\n";
+printf $out_fh "header __%sLUREs\tSubject =~ /\\b(%s)\\b/i\n\n", $rule_prefix, $lures_regex;
 
 # --- Process Brands ---
 while (my $brand_regex = <$br_fh>) {
@@ -73,19 +69,12 @@ while (my $brand_regex = <$br_fh>) {
     printf $out_fh "score  %s%s\t%s\n", $rule_prefix, $identifier, $spam_score;
 
     printf $out_fh "meta   %s%ss\t(__%s%ss && !__%s%sb)\n", $rule_prefix, $identifier, $rule_prefix, $identifier, $rule_prefix, $identifier;
-    printf $out_fh "score  %s%ss\t%s\n", $rule_prefix, $identifier, $spam_score;
+    printf $out_fh "score  %s%ss\t%s\n", $rule_prefix, $identifier, $subj_score;
 
     # Brand + Lure Logic
-    foreach my $lure (@lures) {
-        my $l_id = uc($lure);
-        $l_id =~ s/[^A-Z0-9]//g;
-        $l_id = substr($l_id, 0, 10);
-        
-        # Meta name structure: L_WK_BRAND_LURE (e.g., L_WK_AMAZON_REWARD)
-        printf $out_fh "meta   %s%s_%s\t((__%s%sa || __%s%ss) && __%sLU_%s && !__%s%sb)\n",
-            $rule_prefix, $identifier, $l_id, $rule_prefix, $identifier, $rule_prefix, $identifier, $rule_prefix, $l_id, $rule_prefix, $identifier;
-        printf $out_fh "score  %s%s_%s\t%s\n", $rule_prefix, $identifier, $l_id, $lure_score;
-    }
+    printf $out_fh "meta   %s%sl\t((__%s%sa || __%s%ss) && __%sLUREs && !__%s%sb)\n",
+        $rule_prefix, $identifier, $rule_prefix, $identifier, $rule_prefix, $identifier, $rule_prefix, $rule_prefix, $identifier;
+    printf $out_fh "score  %s%sl\t%s\n", $rule_prefix, $identifier, $lure_score;
 
     print $out_fh "\n";
 }
