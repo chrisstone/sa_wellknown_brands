@@ -11,3 +11,5 @@ confirmation
 statement
 payment
 overdue
+declined
+rejected

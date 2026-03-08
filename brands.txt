@@ -1,103 +1,128 @@
 # --- Technology / Cloud ---
-icloud
-microsoft
-adobe
-zoom
-docusign
-dropbox
-googledrive
-onedrive
-opensea
+icloud.com	icloud
+microsoft.com	microsoft
+adobe.com	adobe
+zoom.com	zoom
+docusign.com	docusign
+dropbox.com	dropbox
+opensea.com	opensea
 
 # --- Financial / Banking / Payments ---
-paypal
-#visa
-#mastercard
-discover
-americanexpress
-coinbase
-binance
-metamask
-kraken
+paypal.com	paypal
+discover.com	discover
+americanexpress.com	american.?express
+bankofamerica.com	bank.?of.?america
+capitalone.com	capital.?one
+chase.com	chase
+wellsfargo.com	wells.?fargo
+citi.com	citi
+pnc.com	pnc
+usbank.com	us.?bank
+53.com	fifth.?third
+venmo.com	venmo
+skrill.com	skrill
+payoneer.com	payoneer
+stripe.com	stripe
+cash.app	cash.?app
+coinbase.com	coinbase
+binance.com	binance
+metamask.io	metamask
+kraken.com	kraken
 
 # --- Streaming / Entertainment ---
-disney
-netflix
-hulu
-peacock
-max
-steam
-playstation
-xbox
-epicgames
+disney.com	disney
+netflix.com	netflix
+hulu.com	hulu
+peacocktv.com	peacock
+max.com	max
+steampowered.com	steam
+playstation.com	playstation
+xbox.com	xbox
+epicgames.com	epic.?games
 
 # --- Retail (General) ---
-walmart
-sam\W?.?sclub
-costco
-khol.?s
-meijer
-macys
-yeti
-harbor.?freight
+walmart.com	walmart
+samsclub.com	sam.?s.?club
+costco.com	costco
+kohls.com	khol.?s
+meijer.com	meijer
+macys.com	macys
+yeti.com	yeti
+harborfreight.com	harbor.?freight
 
 # --- Retail (Pharmacy / Grocery) ---
-cvs
-walgreens
-whole\W?foods
+cvs.com	cvs
+walgreens.com	walgreens
+wholefoodsmarket.com	whole.?foods
 
 # --- Retail (Home Improvement) ---
-lowe.?s
-acehardware
-home.?depot
-andersen
+lowes.com	lowe.?s
+acehardware.com	ace.?hardware
+homedepot.com	home.?depot
+andersenwindows.com	andersen
 
 # --- Telecommunications / ISP ---
-t.?mobile
-verizon
-att
-comcast
+t-mobile.com	t.?mobile
+verizon.com	verizon
+att.com	att
+xfinity.com	comcast
 
 # --- Shipping / Logistics ---
-fedex
-ups
-usps
-dhl
+fedex.com	fedex
+ups.com	ups
+usps.com	usps
+dhl.com	dhl
 
 # --- Hospitality ---
-marriott
-hilton
+marriott.com	marriott
+hilton.com	hilton
+hyatt.com	hyatt
+ihg.com	ihg
+riu.com	riu
+wyndham.com	wyndham
+choicehotels.com	choice.?hotels
+bestwestern.com	best.?western
 
 # --- Insurance / Security / Warranty ---
-carshield
-mcafee
-norton
-adt
-aaa
+carshield.com	carshield
+mcafee.com	mcafee
+norton.com	norton
+adt.com	adt
+aaa.com	aaa
 
 # --- Coffee ---
-star.?bucks
+starbucks.com	star.?bucks
 
 # --- Job Search ---
-indeed
-ziprecruiter
-monster
+indeed.com	indeed
+ziprecruiter.com	zip.?recruiter
+monster.com	monster
 
 # --- Social Media ---
-facebook
-instagram
-linkedin
-twitter
-tiktok
+facebook.com	face.?book
+instagram.com	instagram
+linkedin.com	linked.?in
+twitter.com	twitter
+tiktok.com	tik.?tok
 
 # --- Government (Use with caution - potential for false positives) ---
-# irs
-# socialsecurity
-# medicare
+irs.gov	irs|internal revenue
+ssa.gov	social.?security
+medicare.gov	medicare
 
 # --- Airlines ---
-united
-delta
+aa.com	americn.?airlines
+united.com	united.?airlines
+delta.com	delta.?air
+
+# --- News Outlets ---
+cnn.com	cnn
+abcnews.go.com	abc.?news
+msnbc.com	msnbc
+foxnews.com	fox.?news
+bbc.com	bbc
+nytimes.com	new.?york.?times
+wsj.com	wall.?street.?journal
 
 # --- Other ---
-trugreen
+trugreen.com	trugreen
